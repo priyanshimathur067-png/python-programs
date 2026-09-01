@@ -1,0 +1,12 @@
+def my_function(*kids):
+    k = (list(kids))
+    print("The kids in list are : ", k  )
+    print ("The kids in tuple are : ", kids  )
+    print ("The kids in set are : ", set(kids)  )
+    print("The youngest kid is : ", kids[1]  )
+    print("The oldest kid is : ", kids[2]  )
+    print("The number of kids are : ", len(kids)  )
+    print("The kids in sorted order are : ", sorted(kids)  )
+    print("The kids in reversed order are : ", sorted(kids, reverse=True)  )
+    print("The dictionary of kids are : ", {i: kids[i] for i in range(len(kids))}  )
+my_function("Emil", "Tobias", "Linus")
