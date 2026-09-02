@@ -1,0 +1,4 @@
+# Add 10 % to salary 
+salary = [50000, 60000, 70000, 80000, 90000]
+result = list (map(lambda x : x + (x * 10 / 100), salary))
+print(result)
