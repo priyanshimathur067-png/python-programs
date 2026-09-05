@@ -6,4 +6,4 @@ def minimum(arr, n):
 
 numbers = [10, 25, 7, 45, 18]
 
-print(minimum(numbers, len(numbers))
+print(minimum(numbers, len(numbers)))
