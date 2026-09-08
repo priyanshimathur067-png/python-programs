@@ -1,8 +1,6 @@
 from math import*
 def count_digits(n):
-    num = n 
-    count = 0
-    while num > 0 :
-        count += 1
-        num = num // 10
-    return count
+    return int(log10(n)) + 1 if n > 0 else 1
+
+count = count_digits(3254)
+print("Number of digits:", count)
