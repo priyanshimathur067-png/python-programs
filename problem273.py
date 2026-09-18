@@ -1,4 +1,4 @@
-# Selection Sort in Python
+# Improved method of selection sort
 arr = [23,34,54,12,11,21]
 n = len(arr)
 for i in range(n-1):
@@ -6,6 +6,5 @@ for i in range(n-1):
     for j in range(i+1, n):
         if arr[j] < arr[min_index]:
             min_index = j
-    min_value = arr.pop(min_index)
-    arr.insert(i, min_value)        
-print("Sorted array is:", arr)        
+    arr[i], arr[min_index] = arr[min_index], arr[i]
+print("Sorted array is:", arr)
