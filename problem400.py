@@ -1,14 +1,15 @@
-def closest_element(arr, target):
-    closest = arr[0]
+def frequency(arr):
+    freq = {}
 
     for i in arr:
-        if abs(i - target) < abs(closest - target):
-            closest = i
+        if i in freq:
+            freq[i] += 1
+        else:
+            freq[i] = 1
 
-    return closest
+    for key in freq:
+        print(key, "->", freq[key], "times")
 
 
-arr = [10, 22, 28, 29, 30, 40]
-target = 25
-
-print(closest_element(arr, target))
+arr = [2, 3, 2, 4, 3, 2]
+frequency(arr)
