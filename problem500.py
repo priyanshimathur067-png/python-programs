@@ -4,8 +4,6 @@ class Product:
 
     def __mul__(self, quantity):
         return self.price * quantity
-
-
 p1 = Product(100)
 
 print(p1 * 5)
