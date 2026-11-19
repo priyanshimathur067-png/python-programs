@@ -1,70 +1,48 @@
+class ElectricityBill:
+    def __init__(self, customer_id, name, units):
+        self.customer_id = customer_id
+        self.name = name
+        self.units = units
+        self.paid = False
 
-class JobTracker:
+    def calculate_bill(self):
+        units = self.units
 
-    def __init__(self):
-        self.jobs = []
+        if units <= 100:
+            bill = units * 3
+        elif units <= 200:
+            bill = (100 * 3) + (units - 100) * 5
+        else:
+            bill = (100 * 3) + (100 * 5) + (units - 200) * 8
 
-    def add_job(self, company, role, status):
-        job = {
-            "company": company,
-            "role": role,
-            "status": status
-        }
+        return bill
 
-        self.jobs.append(job)
-        print("Job application added!")
+    def pay_bill(self):
+        if self.paid:
+            print("Bill already paid!")
+        else:
+            self.paid = True
+            print("Payment successful!")
 
-    def show_jobs(self):
-        for job in self.jobs:
-            print(job)
+    def display_bill(self):
+        bill = self.calculate_bill()
 
-    def update_status(self, company, new_status):
-        for job in self.jobs:
-            if job["company"].lower() == company.lower():
-                job["status"] = new_status
-                print("Status updated!")
-                return
+        if not self.paid:
+            bill += 50
 
-        print("Company not found!")
-
-    def search_company(self, company):
-        for job in self.jobs:
-            if job["company"].lower() == company.lower():
-                print(job)
-                return
-
-        print("No application found!")
-
-    def count_status(self):
-        status_count = {}
-
-        for job in self.jobs:
-            status = job["status"]
-            status_count[status] = (
-                status_count.get(status, 0) + 1
-            )
-
-        print(status_count)
-
-    def show_interviews(self):
-        for job in self.jobs:
-            if job["status"].lower() == "interview":
-                print(job)
+        print("\nCustomer ID:", self.customer_id)
+        print("Customer Name:", self.name)
+        print("Units Consumed:", self.units)
+        print("Electricity Bill:", self.calculate_bill())
+        print("Late Charge:", 0 if self.paid else 50)
+        print("Total Amount:", bill)
+        print("Payment Status:",
+              "Paid" if self.paid else "Unpaid")
 
 
-tracker = JobTracker()
+c1 = ElectricityBill(101, "Rahul", 250)
+c2 = ElectricityBill(102, "Priya", 150)
 
-tracker.add_job("Google", "Python Developer", "Applied")
-tracker.add_job("Infosys", "Software Engineer", "Interview")
-tracker.add_job("TCS", "React Developer", "Rejected")
-tracker.add_job("Wipro", "Python Developer", "Interview")
-
-tracker.show_jobs()
-
-tracker.update_status("Google", "Interview")
-
-tracker.search_company("Google")
-
-tracker.count_status()
-
-tracker.show_interviews()
+c1.display_bill()
+c1.pay_bill()
+c1.display_bill(c2.display_bill())
